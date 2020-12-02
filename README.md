@@ -5,7 +5,7 @@
 <h1 align="center">vue3-observe-visibility2</h1>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-observe-visibility"><img src="https://img.shields.io/npm/v/vue-observe-visibility.svg"/> <img src="https://img.shields.io/npm/dm/vue-observe-visibility.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg"/></a>
+<a href="https://www.npmjs.com/package/vue3-observe-visibility2"><img src="https://img.shields.io/npm/v/vue3-observe-visibility2.svg"/> <img src="https://img.shields.io/npm/dm/vue3-observe-visibility2.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-3.x-brightgreen.svg"/></a>
 </p>
 
 <p align="center">
@@ -41,19 +41,17 @@ npm install --save vue-observe-visibility
 ## Import
 
 ```javascript
-import Vue from 'vue'
 import VueObserveVisibility from 'vue-observe-visibility'
 
-Vue.use(VueObserveVisibility)
+app.use(VueObserveVisibility)
 ```
 
 Or:
 
 ```javascript
-import Vue from 'vue'
 import { ObserveVisibility } from 'vue-observe-visibility'
 
-Vue.directive('observe-visibility', ObserveVisibility)
+app.directive('observe-visibility', ObserveVisibility)
 ```
 
 ## Browser
@@ -74,7 +72,7 @@ Vue.use(VueObserveVisibility)
 Use specific directives:
 
 ```javascript
-Vue.directive('observe-visibility', VueObserveVisibility.ObserveVisibility)
+app.directive('observe-visibility', VueObserveVisibility.ObserveVisibility)
 ```
 
 # Usage
