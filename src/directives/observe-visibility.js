@@ -12,7 +12,7 @@ class VisibilityState {
 		return (this.options.intersection && this.options.intersection.threshold) || 0
 	}
 
-	createObserver (options, vnode) {
+	createObserver (options) {
 		if (this.observer) {
 			this.destroyObserver()
 		}
@@ -32,9 +32,7 @@ class VisibilityState {
 		if (this.callback && this.options.throttle) {
 			const { leading } = this.options.throttleOptions || {}
 			this.callback = throttle(this.callback, this.options.throttle, {
-				leading: (state) => {
-					return leading === 'both' || (leading === 'visible' && state) || (leading === 'hidden' && !state)
-				},
+				leading: (state) => leading === 'both' || (leading === 'visible' && state) || (leading === 'hidden' && !state),
 			})
 		}
 
@@ -60,7 +58,7 @@ class VisibilityState {
 		}, this.options.intersection)
 
 		// Wait for the element to be in document
-		vnode.context.$nextTick(() => {
+		setTimeout(() => {
 			if (this.observer) {
 				this.observer.observe(this.el)
 			}
@@ -81,7 +79,7 @@ class VisibilityState {
 	}
 }
 
-function bind (el, { value }, vnode) {
+function mounted (el, { value }, vnode) {
 	if (!value) return
 	if (typeof IntersectionObserver === 'undefined') {
 		console.warn('[vue-observe-visibility] IntersectionObserver API is not available in your browser. Please install this polyfill: https://github.com/w3c/IntersectionObserver/tree/master/polyfill')
@@ -91,21 +89,7 @@ function bind (el, { value }, vnode) {
 	}
 }
 
-function update (el, { value, oldValue }, vnode) {
-	if (deepEqual(value, oldValue)) return
-	const state = el._vue_visibilityState
-	if (!value) {
-		unbind(el)
-		return
-	}
-	if (state) {
-		state.createObserver(value, vnode)
-	} else {
-		bind(el, { value }, vnode)
-	}
-}
-
-function unbind (el) {
+function unmounted (el) {
 	const state = el._vue_visibilityState
 	if (state) {
 		state.destroyObserver()
@@ -113,8 +97,22 @@ function unbind (el) {
 	}
 }
 
+function componentUpdated (el, { value, oldValue }, vnode) {
+	if (deepEqual(value, oldValue)) return
+	const state = el._vue_visibilityState
+	if (!value) {
+		unmounted(el)
+		return
+	}
+	if (state) {
+		state.createObserver(value, vnode)
+	} else {
+		mounted(el, { value }, vnode)
+	}
+}
+
 export default {
-	bind,
-	update,
-	unbind,
+	mounted,
+	componentUpdated,
+	unmounted,
 }

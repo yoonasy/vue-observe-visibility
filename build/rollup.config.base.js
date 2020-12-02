@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
 import cjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
+import json from 'rollup-plugin-json'
 
 const config = require('../package.json')
 
@@ -18,6 +19,7 @@ export default {
 			runtimeHelpers: true,
 		}),
 		cjs(),
+		json(),
 		replace({
 			VERSION: JSON.stringify(config.version),
 		}),

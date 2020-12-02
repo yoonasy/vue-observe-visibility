@@ -19,7 +19,7 @@ export function throttle (callback, delay, options = {}) {
 	const throttled = (state, ...args) => {
 		currentArgs = args
 		if (timeout && state === lastState) return
-		let leading = options.leading
+		let { leading } = options
 		if (typeof leading === 'function') {
 			leading = leading(state, lastState)
 		}
@@ -43,6 +43,7 @@ export function throttle (callback, delay, options = {}) {
 export function deepEqual (val1, val2) {
 	if (val1 === val2) return true
 	if (typeof val1 === 'object') {
+		// eslint-disable-next-line no-restricted-syntax
 		for (const key in val1) {
 			if (!deepEqual(val1[key], val2[key])) {
 				return false

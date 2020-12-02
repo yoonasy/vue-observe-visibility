@@ -1,11 +1,12 @@
 import base from './rollup.config.base'
 
-const config = Object.assign({}, base, {
+const config = {
+	...base,
 	output: {
-		name: 'vue-observe-visibility',
-		file: 'dist/vue-observe-visibility.esm.js',
+		name: 'vue3-observe-visibility2',
+		file: 'dist/vue3-observe-visibility2.esm.js',
 		format: 'es',
 	},
-})
+}
 
 export default config

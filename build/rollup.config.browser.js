@@ -1,14 +1,15 @@
-import base from './rollup.config.base'
 import { terser } from 'rollup-plugin-terser'
+import base from './rollup.config.base'
 
-const config = Object.assign({}, base, {
+const config = {
+	...base,
 	output: {
 		exports: 'named',
-		name: 'VueObserveVisibility',
-		file: 'dist/vue-observe-visibility.min.js',
+		name: 'Vue3ObserveVisibility2',
+		file: 'dist/vue3-observe-visibility2.min.js',
 		format: 'iife',
 	},
-})
+}
 
 config.plugins.push(terser())
 

@@ -1,8 +1,8 @@
 <p align="center">
-<img src="./logo.png" alt="vue-observe-visibility logo"/>
+<img src="./logo.png" alt="vue3-observe-visibility2 logo"/>
 </p>
 
-<h1 align="center">vue-observe-visibility</h1>
+<h1 align="center">vue3-observe-visibility2</h1>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-observe-visibility"><img src="https://img.shields.io/npm/v/vue-observe-visibility.svg"/> <img src="https://img.shields.io/npm/dm/vue-observe-visibility.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg"/></a>
