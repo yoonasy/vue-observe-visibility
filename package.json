@@ -21,7 +21,8 @@
   "unpkg": "dist/vue3-observe-visibility2.min.js",
   "scripts": {
     "dev": "nodemon --exec 'npm run build' --watch src",
-    "build": "rimraf dist/* && npm run build:browser && npm run build:es && npm run build:umd",
+    "build": "rimraf dist/* && npm run bulidEntry",
+		"bulidEntry": "npm run build:browser && npm run build:es && npm run build:umd",
     "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
